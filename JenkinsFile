@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Build') {
+            steps {
+                // Add your build steps here
+                // For example: sh 'mvn clean install'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                // Add your test steps here
+                // For example: sh 'mvn test'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                // Add your deployment steps here
+                // For example: sh 'mvn deploy'
+            }
+        }
+    }
+    
+    post {
+        always {
+            // Add any post-build actions here
+            // For example: archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+        }
+        
+        success {
+            // Add any actions to perform on successful build here
+            // For example: sh 'echo "Build successful"'
+        }
+        
+        failure {
+            // Add any actions to perform on failed build here
+            // For example: sh 'echo "Build failed"'
+        }
+    }
+}
